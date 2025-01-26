@@ -48,36 +48,32 @@ function changePlayer(){
     statusText.textContent = `${currentPlayer}'s turn`; 
 
 }
-function checkWinner(){
+function checkWinner() {
     let roundWon = false;
 
-    for(let i = 0; i < winConditions.length; i++){
+    for (let i = 0; i < winConditions.length; i++) {
         const condition = winConditions[i];
         const cellA = options[condition[0]];
         const cellB = options[condition[1]];
         const cellC = options[condition[2]];
 
-        if(cellA == "" || cellB == "" || cellC == ""){
+        if (cellA === "" || cellB === "" || cellC === "") {
             continue;
         }
+
+        if (cellA === cellB && cellB === cellC) {
+            roundWon = true;
+            break; 
+        }
     }
-    if(cellA == cellB && cellB == cellC){
-        roundWon = true;
-        break; 
-    }
-    
-    if(roundWon){
+
+    if (roundWon) {
         statusText.textContent = `${currentPlayer} wins!`;
         running = false;
-    }
-    else if(!options.includes("")){
+    } else if (!options.includes("")) {
         statusText.textContent = `Draw!`;
         running = false;
     }
-    else{
-        changePlayer();
-    }
-
 }
 function restartGame(){
     currentPlayer = "X";
