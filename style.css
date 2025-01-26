@@ -17,3 +17,7 @@
     width: 225px;
     margin: auto;
 }
+#restartBtn{
+    color: black;
+    padding: 5px;
+}
